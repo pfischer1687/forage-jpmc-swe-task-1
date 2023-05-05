@@ -23,7 +23,7 @@ import random
 import urllib.request
 
 # Server API URLs
-QUERY = "http://localhost:8080/query?id={}"
+QUERY = "http://localhost:8000/query?id={}"
 
 # 500 server request
 N = 500

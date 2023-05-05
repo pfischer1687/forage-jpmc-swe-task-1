@@ -232,7 +232,7 @@ def run(routes, host='0.0.0.0', port=8080):
     thread = threading.Thread(target=server.serve_forever)
     thread.daemon = True
     thread.start()
-    print('HTTP server started on port 8080')
+    print(f'HTTP server started on port {port}')
     while True:
         from time import sleep
         sleep(1)
@@ -337,4 +337,4 @@ if __name__ == '__main__':
     if not os.path.isfile('test.csv'):
         print("No data found, generating...")
         generate_csv()
-    run(App())
+    run(App(), port=8000)
