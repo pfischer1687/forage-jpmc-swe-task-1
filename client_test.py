@@ -26,6 +26,11 @@ class ClientTest(unittest.TestCase):
     for price in prices:
       self.assertEqual(getRatio(price["ABC"], price["DEF"]), price["ABC"] / price["DEF"])
 
+  def test_getRatio_calculateRatioPriceBIsZero(self):
+    prices = [{"ABC": 119.2, "DEF": 0}, {"ABC": 121.2, "DEF": 0}]
+    for price in prices:
+      self.assertIsNone(getRatio(price["ABC"], price["DEF"]))
+
 
 
 
