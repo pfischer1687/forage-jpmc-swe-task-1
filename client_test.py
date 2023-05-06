@@ -1,5 +1,5 @@
 import unittest
-from client3 import getDataPoint
+from client3 import getDataPoint, getRatio
 
 class ClientTest(unittest.TestCase):
   def test_getDataPoint_calculatePrice(self):
@@ -21,7 +21,11 @@ class ClientTest(unittest.TestCase):
                                              (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
 
 
-  """ ------------ Add more unit tests ------------ """
+  def test_getRatio_calculateRatio(self):
+    prices = [{"ABC": 119.2, "DEF": 121.68}, {"ABC": 121.2, "DEF": 120.48}]
+    for price in prices:
+      self.assertEqual(getRatio(price["ABC"], price["DEF"]), price["ABC"] / price["DEF"])
+
 
 
 
