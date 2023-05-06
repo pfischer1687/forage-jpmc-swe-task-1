@@ -20,7 +20,6 @@ class ClientTest(unittest.TestCase):
       self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'],
                                              (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
 
-
   def test_getRatio_calculateRatio(self):
     prices = [{"ABC": 119.2, "DEF": 121.68}, {"ABC": 121.2, "DEF": 120.48}]
     for price in prices:
@@ -31,8 +30,10 @@ class ClientTest(unittest.TestCase):
     for price in prices:
       self.assertIsNone(getRatio(price["ABC"], price["DEF"]))
 
-
-
+  def test_getRatio_calculateRatioPriceAIsZero(self):
+    prices = [{"ABC": 0, "DEF": 121.68}, {"ABC": 0, "DEF": 120.48}]
+    for price in prices:
+      self.assertEqual(getRatio(price["ABC"], price["DEF"]), 0)
 
 if __name__ == '__main__':
     unittest.main()
